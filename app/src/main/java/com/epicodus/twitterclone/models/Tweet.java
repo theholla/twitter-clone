@@ -5,10 +5,12 @@ import android.content.Context;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 import com.epicodus.twitterclone.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 /**
@@ -63,5 +65,11 @@ public class Tweet extends Model {
 
     public User getUser() {
         return mUser;
+    }
+
+    public static List<Tweet> all() {
+        return new Select()
+                .from(Tweet.class)
+                .execute();
     }
 }
